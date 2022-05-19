@@ -4,7 +4,7 @@ pipeline {
     }
 
     stages {
-        stage('Install Dependencies') {
+        stage ('Install Dependencies') {
             steps {
                 dir ('exchange-cli') {
                     sh "npm install"
@@ -16,6 +16,14 @@ pipeline {
             steps {
                 dir ('exchange-cli') {
                     sh "npm run build"
+                }
+            }
+        }
+
+        stage ('Unit Tests') {
+            steps {
+                dir ('exchange-cli') {
+                    sh "npm run test:unit"
                 }
             }
         }
